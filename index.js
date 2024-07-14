@@ -14,11 +14,16 @@ const hello = [
   },
 ];
 
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+app.use(express.static('public'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.json("Ninedev 2024");
+  res.render('index');
 });
 
 app.get("/detail/:id", (req, res) => {
