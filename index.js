@@ -13,6 +13,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', productRouter);
+app.get('/', (req, res) => {
+  res.render('index');
+})
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

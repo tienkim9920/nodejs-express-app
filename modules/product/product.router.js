@@ -5,9 +5,6 @@ const prefix = '/products';
 
 router.get(prefix, productController.getAllProducts);
 router.get(`${prefix}/create`, productController.createProduct);
-router.get(`${prefix}/detail/:id`, productController.getProductById);
-router.post(prefix, productController.createProduct);
-router.put(prefix, productController.updateProduct);
-router.delete(prefix, productController.deleteProduct);
+router.post(`${prefix}/create`, productController.postCreateProduct);
 
 module.exports = router;
