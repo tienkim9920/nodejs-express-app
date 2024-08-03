@@ -45,9 +45,27 @@ exports.postCreateProduct = (req, res) => {
     products.push({
       id: Number(Math.random()),
       ...body,
-    })
+    });
     res.json(200);
   } catch (error) {
-    res.json('Server internal error');
+    res.json("Server internal error");
   }
 };
+
+exports.getDetailProduct = (req, res) => {
+  const { id } = req.params;
+
+  const product = products.find(item => item.id == id);
+  res.render("product/detail", { product });
+};
+
+exports.deleteProduct = (req, res) => {
+  try {
+    const { id } = req.params;
+    const index = products.findIndex(item => item.id == id);
+    products.splice(index, 1);
+    res.json(200);
+  } catch (error) {
+    res.json("Server internal error");
+  }
+}
